@@ -1,0 +1,56 @@
+scrape_configs:
+  - job_name: 'prometheus'
+    scrape_interval: 10s
+    static_configs:
+      - targets: ['localhost:9090']
+  - job_name: 'config-service'
+    scrape_interval: 10s
+    metrics_path: '/prometheus'
+    static_configs:
+      - targets: ['localhost:8000']
+  - job_name: 'discovery-service'
+    scrape_interval: 10s
+    metrics_path: '/prometheus'
+    static_configs:
+      - targets: ['localhost:8001']
+  - job_name: 'uaa-service'
+    scrape_interval: 10s
+    metrics_path: '/prometheus'
+    static_configs:
+      - targets: ['localhost:8002']
+  - job_name: 'blog-service'
+    scrape_interval: 10s
+    metrics_path: '/prometheus'
+    static_configs:
+      - targets: ['localhost:8003']
+  - job_name: 'profile-service'
+    scrape_interval: 10s
+    metrics_path: '/prometheus'
+    static_configs:
+      - targets: ['localhost:8004']
+  - job_name: 'gateway-service'
+    scrape_interval: 10s
+    metrics_path: '/prometheus'
+    static_configs:
+      - targets: ['localhost:8005']
+  - job_name: 'registration-service'
+    scrape_interval: 10s
+    metrics_path: '/prometheus'
+    static_configs:
+      - targets: ['localhost:8006']
+  - job_name: 'admin-dashboard'
+    scrape_interval: 10s
+    metrics_path: '/prometheus'
+    static_configs:
+      - targets: ['localhost:8007']
+  - job_name: spring-boot
+    scrape_interval: 5s
+    scrape_timeout: 5s
+    metrics_path: prometheus
+    scheme: http
+    #basic_auth:
+    #  username: user
+    #  password: pwd
+    static_configs:
+      - targets:
+        - 127.0.0.1:8080  #此处填写 Spring Boot 应用的 IP + 端口号
